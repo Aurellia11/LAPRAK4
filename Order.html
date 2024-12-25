@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peek-a-Box | Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      :root {
+        --primary-color: #ff4d6d;
+        --secondary-color: #ff8fab;
+        --background-color: #ffd6e0;
+        --light-color: #ffc2d1;
+      }
+
+      body {
+        background-color: var(--background-color);
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      /* Navigation Styles */
+      .navbar {
+        background-color: var(--secondary-color);
+        padding: 1rem;
+      }
+
+      .navbar-brand {
+        color: white !important;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .nav-link {
+        color: white !important;
+        font-weight: 500;
+        margin-left: 1rem;
+      }
+
+      /* Page Transition */
+      .transition-curtain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary-color);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease-in-out;
+        z-index: 1000;
+      }
+
+      /* Hero Section */
+      .hero {
+        background-image: url(GAMBAR/buu.gif);
+        padding: 4rem 1rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        color: var(--primary-color);
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .order-form {
+        background-color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-label {
+        color: var(--primary-color);
+        font-weight: 500;
+      }
+
+      .form-control:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 0.25rem rgba(255, 77, 109, 0.25);
+      }
+
+      .btn-submit {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        transition: background-color 0.3s;
+      }
+
+      .btn-submit:hover {
+        background-color: var(--secondary-color);
+      }
+      /* Footer */
+      footer {
+        background-color: var(--secondary-color);
+        color: rgb(199, 65, 132);
+        padding: 1rem;
+        margin-top: 4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Transition Curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Peek-a-Box</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Produk.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Order.html">Order</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="container">
+        <h1>Order Now</h1>
+        <p>Fill out the form below to place your order!</p>
+      </div>
+    </div>
+
+    <!-- Order Form -->
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form class="order-form" id="orderForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="product" class="form-label">Product</label>
+              <select class="form-control" id="product" required>
+                <option value="">Choose a product...</option>
+                <option value="anime">Sanrio Characters Fall Asleep Series - Rp 170.000</option>
+                <option value="pop">Star Wars Mandalorian Series Figures - Rp 193.000</option>
+                <option value="kawaii">Labubu Monsters Patisseries - Rp 168.000</option>
+                <option value="kawaii">Toy Story: Andy's Room Series - Rp 193.000</option>
+                <option value="kawaii">Momiji Book Shop Series - Rp 168.000</option>
+                <option value="kawaii">Toy Story : Spooky Night Series - Rp 185.000</option>
+                <option value="kawaii">Marvel Deadpool Series Figures - Rp 195.000</option>
+                <option value="kawaii">Beetlejuice Series Figures - Rp 190.000</option>
+                <option value="kawaii">CRYBABY × Powerpuff Girls Series - Rp 179.000</option>
+                <option value="kawaii">DIMOO Weaving Wonders Series Figures - Rp 185.000</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="quantity" min="1" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Shipping Address</label>
+              <textarea class="form-control" id="address" rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Pre Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center">
+      <div class="container">
+        <p>&copy; 2024 Peek-a-Box 🤍.</p>
+      </div>
+    </footer>
+  </body>
+</html>

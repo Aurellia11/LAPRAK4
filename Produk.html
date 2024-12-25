@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | Peek-a-Box</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        :root {
+          --primary-color: #ff4d6d;
+          --secondary-color: #ff8fab;
+          --background-color: #ffd6e0;
+          --light-color: #ffc2d1;
+        }
+  
+        body {
+          background-color: var(--background-color);
+          margin: 0;
+          overflow-x: hidden;
+        }
+  
+        /* Navigation Styles */
+        .navbar {
+          background-color: var(--secondary-color);
+          padding: 1rem;
+        }
+  
+        .navbar-brand {
+          color: white !important;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+  
+        .nav-link {
+          color: white !important;
+          font-weight: 500;
+          margin-left: 1rem;
+        }
+  
+        /* Page Transition */
+        .transition-curtain {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: var(--primary-color);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.5s ease-in-out;
+          z-index: 1000;
+        }
+  
+        /* Hero Section */
+        .hero {
+          background-image: url(GAMBAR/bg.png);
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          padding: 4rem 1rem;
+          text-align: center;
+          width: 100%;
+        }
+  
+        .hero h1 {
+          color: var(--primary-color);
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .product-info {
+        padding: 1.5rem;
+      }
+
+      .product-title {
+        color: #ff4d6d;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-price {
+        color: #ff758f;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .product-description {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .buy-button {
+        background-color: #ff4d6d;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .buy-button:hover {
+        background-color: #ff758f;
+      }
+      footer {
+        background-color: rgb(180, 68, 137);
+        color: white;
+        padding: 0.8rem;
+        margin-top: 6rem;
+      }
+    </style>
+  </head>
+    <!-- Transition Curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Peek-a-Box</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Produk.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Order.html">Order</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <h1>Our Products</h1>
+      <p>Explore our amazing collection of blind boxes!</p>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="GAMBAR/helo.png" alt="Anime Series 1" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Sanrio Characters Fall Asleep Series</h3>
+          <p class="product-price">Rp 170.000</p>
+          <p class="product-description">Take a nap with 𝗦𝗮𝗻𝗿𝗶𝗼 𝗖𝗵𝗮𝗿𝗮𝗰𝘁𝗲𝗿𝘀 𝗙𝗮𝗹𝗹 𝗔𝘀𝗹𝗲𝗲𝗽 𝗦𝗲𝗿𝗶𝗲𝘀 and have the sweetest dreams filled with our lovable Sanrio characters! Catch 'em in stores now!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+ 
+      <div class="product-card">
+        <img src="GAMBAR/alien.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Star Wars Mandalorian Series Figures</h3>
+          <p class="product-price">Rp 193.000</p>
+          <p class="product-description">Masuki galaksi yang jauh bersama koleksi Star Wars: Mandalorian Series!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="GAMBAR/labu.png" alt="Kawaii Collection" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Labubu Monsters Patisseries</h3>
+          <p class="product-price">Rp 168.000</p>
+          <p class="product-description">The Monsters Labubu Patisseries menggabungkan dunia monster dengan tema manis patisserie!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+    <div class="product-card">
+        <img src="GAMBAR/andy.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Toy Story: Andy's Room Series</h3>
+          <p class="product-price">Rp 193.000</p>
+          <p class="product-description">𝗧𝗼𝘆 𝗦𝘁𝗼𝗿𝘆: 𝗔𝗻𝗱𝘆’𝘀 𝗥𝗼𝗼𝗺 𝗦𝗲𝗿𝗶𝗲𝘀 𝗦𝗰𝗲𝗻𝗲 𝗦𝗲𝘁𝘀. Collect these timeless tales of friendship, adventure, and the magic of childhood imagination. They’re available in our stores today! Swing by and grab yours!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="GAMBAR/momiji.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Momiji Book Shop Series</h3>
+          <p class="product-price">Rp 168.000</p>
+          <p class="product-description">Koleksi edisi pertama Blink Box Momiji menghadirkan karakter-karakter lucu dan penuh warna khas Momiji!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="GAMBAR/buz.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Toy Story : Spooky Night Series</h3>
+          <p class="product-price">Rp 185.000</p>
+          <p class="product-description">Rayakan malam yang menyeramkan dengan Disney Pixar Spooky Night Series!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="GAMBAR/spider.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Marvel Deadpool Series Figures</h3>
+          <p class="product-price">Rp 195.000</p>
+          <p class="product-description">Masuki dunia penuh aksi dan humor bersama Marvel Deadpool Series Figures!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="GAMBAR/juice.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Beetlejuice Series Figures</h3>
+          <p class="product-price">Rp 190.000</p>
+          <p class="product-description">Rayakan dunia mistis dan aneh dengan Beetlejuice Series Figures!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="GAMBAR/power.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">CRYBABY × Powerpuff Girls Series</h3>
+          <p class="product-price">Rp 179.000</p>
+          <p class="product-description">Hasil kolaborasi unik antara CRYBABY dan Powerpuff Girls, seri ini menghadirkan CRYBABY × Powerpuff Girls Series!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="GAMBAR/dimo.png" alt="Pop Culture Series" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">DIMOO Weaving Wonders Series Figures</h3>
+          <p class="product-price">Rp 185.000</p>
+          <p class="product-description">DIMOO Weaving Wonders Series Figures membawa Anda ke dunia ajaib DIMOO yang penuh kreativitas!</p>
+          <a href="Order.html" class="buy-button">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center">
+      <div class="container">
+        <p>&copy; 2024 Peek-a-Box 🤍.</p>
+      </div>
+    </footer>
+  </body>
+</html>
