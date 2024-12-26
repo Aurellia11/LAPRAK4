@@ -142,8 +142,7 @@
           <div class="row justify-content-center">
             <div class="col-md-8">
               <form id="preOrderForm" name="submit-to-google-sheet">
-                <!-- Date field will be handled automatically by the script -->
-                <input type="hidden" name="Date" id="Date" />
+               
                 <div class="mb-3">
                   <label for="Name" class="form-label">Full Name</label>
                   <input type="text" class="form-control" id="Name" name="Name" required />
@@ -199,7 +198,7 @@
           const form = document.getElementById("preOrderForm");
           const loadingSpinner = document.getElementById("loadingSpinner");
           const submitText = document.getElementById("submitText");
-          const scriptURL = "https://script.google.com/macros/s/AKfycby3dttQn-zLYOnHhropQyhrcbTf89MPe2lghaEExxtJ6UmMCbYGKUyNGzrtT8JFL9kSlQ/exec"; // Ganti dengan URL Apps Script Anda
+          const scriptURL = "https://script.google.com/macros/s/AKfycbwzpGBWFLZCPtSdcgbVDnP1YM_VwcKV84kht74ZFv57NyYjeCD7uHWSh9XonADkqcfzsA/exec"; // Ganti dengan URL Apps Script Anda
           
           // Set field Date dengan tanggal saat ini
           document.getElementById("Date").value = new Date().toISOString().slice(0, 10); // Format: YYYY-MM-DD
