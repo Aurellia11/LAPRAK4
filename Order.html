@@ -143,7 +143,7 @@
     <div class="container my-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <form class="order-form" id="orderForm">
+          <form class="Peek-a-Box" id="Peek-a-Box">
             <div class="mb-3">
               <label for="name" class="form-label">Full Name</label>
               <input type="text" class="form-control" id="name" required />
@@ -197,5 +197,27 @@
         <p>&copy; 2024 Peek-a-Box 🤍.</p>
       </div>
     </footer>
+
+    <script>
+      function submitForm() {
+        var formData = {
+          name: document.getElementById("Full Name").value,
+          email: document.getElementById("Email").value,
+          phone: document.getElementById("PhoneNumber").value,
+          product: document.getElementById("Product").value,
+          quantity: document.getElementById("Quantity").value,
+          address: document.getElementById("ShippingAddress").value,
+        };
+        const scriptURL = "https://script.google.com/macros/s/AKfycby9HUZ0oah9wYcrjs6YaZvu1D_7FxbsiiE-ASYGSj_OSzbeMOFTcP4L9aBBwtOOp4xX6g/exec";
+
+        fetch("https://script.google.com/macros/s/AKfycbx1EY_UMAc2u1qp-pNZlbYx2h8wRI_rSquvFZzShq-g8sKQqIsBjS5EdRZ5khxTMlYFmg/exec", {
+          method: "POST",
+          body: JSON.stringify(formData),
+        })
+          .then((response) => response.json())
+          .then((data) => alert(data.message))
+          .catch((error) => alert("Error: " + error));
+      }
+    </script>
   </body>
 </html>
