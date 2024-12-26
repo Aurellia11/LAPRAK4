@@ -138,35 +138,30 @@
         <p>Fill out the form below to place your order!</p>
       </div>
     </div>
-
-    <!-- Order Form -->
-    <html>
-      <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-      </head>
-      <body>
         <div class="container my-5">
           <div class="row justify-content-center">
             <div class="col-md-8">
-              <form class="Peek-a-Box" id="peekABoxForm" name="submit-to-google-sheet">
+              <form id="preOrderForm" name="submit-to-google-sheet">
+                <!-- Date field will be handled automatically by the script -->
+
                 <div class="mb-3">
-                  <label for="name" class="form-label">Full Name</label>
-                  <input type="text" class="form-control" id="name" name="name" required />
+                  <label for="Name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="Name" name="Name" required />
                 </div>
 
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" required />
+                  <label for="Email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="Email" name="Email" required />
                 </div>
 
                 <div class="mb-3">
-                  <label for="phone" class="form-label">Phone Number</label>
-                  <input type="tel" class="form-control" id="phone" name="phone" required />
+                  <label for="Phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="Phone" name="Phone" required />
                 </div>
 
                 <div class="mb-3">
-                  <label for="product" class="form-label">Product</label>
-                  <select class="form-control" id="product" name="product" required>
+                  <label for="Product" class="form-label">Product</label>
+                  <select class="form-control" id="Product" name="Product" required>
                     <option value="">Choose a product...</option>
                     <option value="Sanrio Characters Fall Asleep Series">Sanrio Characters Fall Asleep Series - Rp 170.000</option>
                     <option value="Star Wars Mandalorian Series">Star Wars Mandalorian Series Figures - Rp 193.000</option>
@@ -182,13 +177,13 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="quantity" class="form-label">Quantity</label>
-                  <input type="number" class="form-control" id="quantity" name="quantity" min="1" required />
+                  <label for="Quantity" class="form-label">Quantity</label>
+                  <input type="number" class="form-control" id="Quantity" name="Quantity" min="1" required />
                 </div>
 
                 <div class="mb-3">
-                  <label for="address" class="form-label">Shipping Address</label>
-                  <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                  <label for="Address" class="form-label">Shipping Address</label>
+                  <textarea class="form-control" id="Address" name="Address" rows="3" required></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">
@@ -200,18 +195,11 @@
           </div>
         </div>
 
-        <footer class="text-center">
-          <div class="container">
-            <p>&copy; 2024 Peek-a-Box 🤍.</p>
-          </div>
-        </footer>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script>
-          const form = document.getElementById("peekABoxForm");
+          const form = document.getElementById("preOrderForm");
           const loadingSpinner = document.getElementById("loadingSpinner");
           const submitText = document.getElementById("submitText");
-          const scriptURL = "https://script.google.com/macros/s/AKfycbyNYywThT1vzOQExow_K3A0AdbSMk6FbI8C_q5cVmXPwV7RKDo__K1F5E2SYQhOfvzdSQ/exec";
+          const scriptURL = "https://script.google.com/macros/s/AKfycby3dttQn-zLYOnHhropQyhrcbTf89MPe2lghaEExxtJ6UmMCbYGKUyNGzrtT8JFL9kSlQ/exec"; // Ganti dengan URL Apps Script Anda
 
           form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -220,32 +208,24 @@
             loadingSpinner.classList.remove("d-none");
             submitText.textContent = "Submitting...";
 
-            // Get form data and convert to object
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
             fetch(scriptURL, {
               method: "POST",
-              body: JSON.stringify(data),
-              headers: {
-                "Content-Type": "application/json",
-              },
+              body: new FormData(form), // Kirim langsung FormData, tanpa JSON.stringify
             })
-              .then((response) => {
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                return response.json();
-              })
+              .then((response) => response.json())
               .then((data) => {
-                alert("Order submitted successfully!");
-                form.reset();
+                if (data.result === "success") {
+                  alert("Order submitted successfully!");
+                  form.reset();
+                } else {
+                  throw new Error("Submission failed");
+                }
               })
               .catch((error) => {
-                console.error("Error!", error.message);
+                console.error("Error:", error);
                 alert("There was an error submitting your order. Please try again.");
               })
               .finally(() => {
-                // Hide loading state
                 loadingSpinner.classList.add("d-none");
                 submitText.textContent = "Pre Order";
               });
