@@ -199,25 +199,56 @@
     </footer>
 
     <script>
-      function submitForm() {
-        var formData = {
-          name: document.getElementById("Full Name").value,
-          email: document.getElementById("Email").value,
-          phone: document.getElementById("PhoneNumber").value,
-          product: document.getElementById("Product").value,
-          quantity: document.getElementById("Quantity").value,
-          address: document.getElementById("ShippingAddress").value,
-        };
-        const scriptURL = "https://script.google.com/macros/s/AKfycby9HUZ0oah9wYcrjs6YaZvu1D_7FxbsiiE-ASYGSj_OSzbeMOFTcP4L9aBBwtOOp4xX6g/exec";
+      document.getElementById("Peek-a-Box").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        fetch("https://script.google.com/macros/s/AKfycbx1EY_UMAc2u1qp-pNZlbYx2h8wRI_rSquvFZzShq-g8sKQqIsBjS5EdRZ5khxTMlYFmg/exec", {
+        // Ubah tampilan tombol saat loading
+        const submitButton = document.getElementById("submitButton");
+        submitButton.disabled = true;
+        submitButton.innerHTML = "Mengirim...";
+
+        // Kumpulkan data form
+        const formData = {
+          FullName: document.getElementById("FullName").value,
+          Email: document.getElementById("Email").value,
+          PhoneNumber: document.getElementById("PhoneNumber").value,
+          Product: document.getElementById("Product").value,
+          Quantity: document.getElementById("Quantity").value,
+          ShippingAddress: document.getElementById("ShippingAddress").value,
+        };
+
+        // Debug data
+        console.log("Form Data:", formData);
+
+        // Ganti dengan URL Google Apps Script Anda
+        const scriptURL = "https://script.google.com/macros/s/AKfycbzxptCr_g9B9FzcbgtiGg0OSnDS958m3Wp1u3Vig9erpwkXu5gZ82vzeacxcZqeofKYEg/exec";
+        const form = document.forms["Peek-a-Box"];
+
+        // Kirim ke Google Sheets
+        fetch(scriptURL, {
           method: "POST",
           body: JSON.stringify(formData),
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "Peek-a-Box",
+          },
         })
-          .then((response) => response.json())
-          .then((data) => alert(data.message))
-          .catch((error) => alert("Error: " + error));
-      }
+          .then((response) => {
+            console.log("Success:", response);
+            alert("Order berhasil dikirim!");
+            this.reset();
+            // Reset tombol
+            submitButton.disabled = false;
+            submitButton.innerHTML = "Pre Order";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Terjadi kesalahan saat mengirim order");
+            // Reset tombol jika error
+            submitButton.disabled = false;
+            submitButton.innerHTML = "Pre Order";
+          });
+      });
     </script>
   </body>
 </html>
