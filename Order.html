@@ -178,7 +178,7 @@
 
                 <div class="mb-3">
                   <label for="Quantity" class="form-label">Quantity</label>
-                  <input type="text" class="form-control" id="Quantity" name="Quantity" min="1" required />
+                  <input type="number" class="form-control" id="Quantity" name="Quantity" min="1" required />
                 </div>
 
                 <div class="mb-3">
@@ -200,6 +200,9 @@
           const loadingSpinner = document.getElementById("loadingSpinner");
           const submitText = document.getElementById("submitText");
           const scriptURL = "https://script.google.com/macros/s/AKfycby3dttQn-zLYOnHhropQyhrcbTf89MPe2lghaEExxtJ6UmMCbYGKUyNGzrtT8JFL9kSlQ/exec"; // Ganti dengan URL Apps Script Anda
+          
+          // Set field Date dengan tanggal saat ini
+          document.getElementById("Date").value = new Date().toISOString().slice(0, 10); // Format: YYYY-MM-DD
 
           form.addEventListener("submit", (e) => {
             e.preventDefault();
