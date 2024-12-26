@@ -140,115 +140,118 @@
     </div>
 
     <!-- Order Form -->
-    <div class="container my-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <form class="Peek-a-Box" id="Peek-a-Box">
-            <div class="mb-3">
-              <label for="name" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="name" required />
-            </div>
+    <html>
+      <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+      </head>
+      <body>
+        <div class="container my-5">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <form class="Peek-a-Box" id="peekABoxForm" name="submit-to-google-sheet">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="name" name="name" required />
+                </div>
 
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" required />
-            </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" required />
+                </div>
 
-            <div class="mb-3">
-              <label for="phone" class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" id="phone" required />
-            </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" required />
+                </div>
 
-            <div class="mb-3">
-              <label for="product" class="form-label">Product</label>
-              <select class="form-control" id="product" required>
-                <option value="">Choose a product...</option>
-                <option value="anime">Sanrio Characters Fall Asleep Series - Rp 170.000</option>
-                <option value="pop">Star Wars Mandalorian Series Figures - Rp 193.000</option>
-                <option value="kawaii">Labubu Monsters Patisseries - Rp 168.000</option>
-                <option value="kawaii">Toy Story: Andy's Room Series - Rp 193.000</option>
-                <option value="kawaii">Momiji Book Shop Series - Rp 168.000</option>
-                <option value="kawaii">Toy Story : Spooky Night Series - Rp 185.000</option>
-                <option value="kawaii">Marvel Deadpool Series Figures - Rp 195.000</option>
-                <option value="kawaii">Beetlejuice Series Figures - Rp 190.000</option>
-                <option value="kawaii">CRYBABY × Powerpuff Girls Series - Rp 179.000</option>
-                <option value="kawaii">DIMOO Weaving Wonders Series Figures - Rp 185.000</option>
-              </select>
-            </div>
+                <div class="mb-3">
+                  <label for="product" class="form-label">Product</label>
+                  <select class="form-control" id="product" name="product" required>
+                    <option value="">Choose a product...</option>
+                    <option value="Sanrio Characters Fall Asleep Series">Sanrio Characters Fall Asleep Series - Rp 170.000</option>
+                    <option value="Star Wars Mandalorian Series">Star Wars Mandalorian Series Figures - Rp 193.000</option>
+                    <option value="Labubu Monsters Patisseries">Labubu Monsters Patisseries - Rp 168.000</option>
+                    <option value="Toy Story: Andy's Room Series">Toy Story: Andy's Room Series - Rp 193.000</option>
+                    <option value="Momiji Book Shop Series">Momiji Book Shop Series - Rp 168.000</option>
+                    <option value="Toy Story: Spooky Night Series">Toy Story: Spooky Night Series - Rp 185.000</option>
+                    <option value="Marvel Deadpool Series">Marvel Deadpool Series Figures - Rp 195.000</option>
+                    <option value="Beetlejuice Series">Beetlejuice Series Figures - Rp 190.000</option>
+                    <option value="CRYBABY × Powerpuff Girls">CRYBABY × Powerpuff Girls Series - Rp 179.000</option>
+                    <option value="DIMOO Weaving Wonders">DIMOO Weaving Wonders Series Figures - Rp 185.000</option>
+                  </select>
+                </div>
 
-            <div class="mb-3">
-              <label for="quantity" class="form-label">Quantity</label>
-              <input type="number" class="form-control" id="quantity" min="1" required />
-            </div>
+                <div class="mb-3">
+                  <label for="quantity" class="form-label">Quantity</label>
+                  <input type="number" class="form-control" id="quantity" name="quantity" min="1" required />
+                </div>
 
-            <div class="mb-3">
-              <label for="address" class="form-label">Shipping Address</label>
-              <textarea class="form-control" id="address" rows="3" required></textarea>
-            </div>
+                <div class="mb-3">
+                  <label for="address" class="form-label">Shipping Address</label>
+                  <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                </div>
 
-            <button type="submit" class="btn-submit">Pre Order</button>
-          </form>
+                <button type="submit" class="btn btn-primary">
+                  <span class="spinner-border spinner-border-sm d-none" id="loadingSpinner" role="status" aria-hidden="true"></span>
+                  <span id="submitText">Pre Order</span>
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <footer class="text-center">
-      <div class="container">
-        <p>&copy; 2024 Peek-a-Box 🤍.</p>
-      </div>
-    </footer>
+        <footer class="text-center">
+          <div class="container">
+            <p>&copy; 2024 Peek-a-Box 🤍.</p>
+          </div>
+        </footer>
 
-    <script>
-      document.getElementById("Peek-a-Box").addEventListener("submit", function (e) {
-        e.preventDefault();
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+          const form = document.getElementById("peekABoxForm");
+          const loadingSpinner = document.getElementById("loadingSpinner");
+          const submitText = document.getElementById("submitText");
+          const scriptURL = "https://script.google.com/macros/s/AKfycbyNYywThT1vzOQExow_K3A0AdbSMk6FbI8C_q5cVmXPwV7RKDo__K1F5E2SYQhOfvzdSQ/exec";
 
-        // Ubah tampilan tombol saat loading
-        const submitButton = document.getElementById("submitButton");
-        submitButton.disabled = true;
-        submitButton.innerHTML = "Mengirim...";
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-        // Kumpulkan data form
-        const formData = {
-          FullName: document.getElementById("FullName").value,
-          Email: document.getElementById("Email").value,
-          PhoneNumber: document.getElementById("PhoneNumber").value,
-          Product: document.getElementById("Product").value,
-          Quantity: document.getElementById("Quantity").value,
-          ShippingAddress: document.getElementById("ShippingAddress").value,
-        };
+            // Show loading state
+            loadingSpinner.classList.remove("d-none");
+            submitText.textContent = "Submitting...";
 
-        // Debug data
-        console.log("Form Data:", formData);
-
-        // Ganti dengan URL Google Apps Script Anda
-        const scriptURL = "https://script.google.com/macros/s/AKfycbzxptCr_g9B9FzcbgtiGg0OSnDS958m3Wp1u3Vig9erpwkXu5gZ82vzeacxcZqeofKYEg/exec";
-        const form = document.forms["Peek-a-Box"];
-
-        // Kirim ke Google Sheets
-        fetch(scriptURL, {
-          method: "POST",
-          body: JSON.stringify(formData),
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "Peek-a-Box",
-          },
-        })
-          .then((response) => {
-            console.log("Success:", response);
-            alert("Order berhasil dikirim!");
-            this.reset();
-            // Reset tombol
-            submitButton.disabled = false;
-            submitButton.innerHTML = "Pre Order";
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            alert("Terjadi kesalahan saat mengirim order");
-            // Reset tombol jika error
-            submitButton.disabled = false;
-            submitButton.innerHTML = "Pre Order";
+            // Get form data and convert to object
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            fetch(scriptURL, {
+              method: "POST",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                alert("Order submitted successfully!");
+                form.reset();
+              })
+              .catch((error) => {
+                console.error("Error!", error.message);
+                alert("There was an error submitting your order. Please try again.");
+              })
+              .finally(() => {
+                // Hide loading state
+                loadingSpinner.classList.add("d-none");
+                submitText.textContent = "Pre Order";
+              });
           });
-      });
-    </script>
+        </script>
+      </body>
+    </html>
   </body>
 </html>
